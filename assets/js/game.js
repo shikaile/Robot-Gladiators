@@ -9,16 +9,12 @@ var playerHealth = 100;
 var playerAttack = 10;
 var playerMoney = 10;
 
-// log multiple values at once like this
-console.log(playerName, playerAttack, playerHealth);
-
 var enemyNames = ["Roborto", "Amy Android", "Robo Trumble"];
-console.log(enemyNames);
 var enemyHealth = 50;
 var enemyAttack = 12;
 
-// fight function
-var fight = function() {
+// fight function expression
+var fight = function(enemyName) {
   // Alert players that they are starting the round
   window.alert("Welcome to Robot Gladiators!");
 
@@ -72,6 +68,10 @@ var fight = function() {
     window.alert("You need to pick a valid option. Try again!");
   }
 };
+
+for(var i = 0; i < enemyNames.length; i++){
+  fight(enemyNames[i]);
+}
 
 // run fight function to start game
 //fight();
