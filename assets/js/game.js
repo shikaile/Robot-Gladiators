@@ -211,7 +211,7 @@ var playerInfo = {
   reset: function(){
     this.health = 100;
     this.money = 10;
-    this.attack = 10;
+    this.attack = 80;
   },
   refillHealth: function() {
     if (this.money >= 5){
