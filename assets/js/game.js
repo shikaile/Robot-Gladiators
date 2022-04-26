@@ -192,7 +192,7 @@ var getPlayerName = function(){
 var playerInfo = {
   name: getPlayerName(),
   health: 100,
-  attack: 30,
+  attack: 80,
   money: 10,
 
   reset: function(){
