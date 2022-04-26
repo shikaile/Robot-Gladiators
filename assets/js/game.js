@@ -38,12 +38,16 @@ var fightOrSkip = function(){
 }
 // fight function
 var fight = function(enemy) {
+  var isPlayerTurn = true;
+  if (Math.random() > 0.5) {
+    isPlayerTurn = false;
+  }
   while (playerInfo.health > 0 && enemy.health > 0) {
+    if (isPlayerTurn) {
     // ask player if they'd like to fight or run
     if (fightOrSkip()) {
       break;
     }
-
     //remove enemy's health by subtracting the amount set in the playerInfo.attack variable
     var damage = randomNumber(playerInfo.attack - 3, playerInfo.attack);
 
@@ -64,9 +68,9 @@ var fight = function(enemy) {
     } else {
       window.alert(enemy.name + " still has " + enemy.health + " health left.");
     }
-
+    } else{
     // remove players's health by subtracting the amount set in the enemy.attack variable
-    var damage = randomNumber(enemy.attack - 3, enemy.attack);
+      var damage = randomNumber(enemy.attack - 3, enemy.attack);
 
     playerInfo.health = Math.max(0, playerInfo.health - damage);
     console.log(
@@ -81,6 +85,8 @@ var fight = function(enemy) {
       window.alert(playerInfo.name + " still has " + playerInfo.health + " health left.");
     }
   }
+  isPlayerTurn = !isPlayerTurn;
+}
 };
 // function to start new game
 var startGame = function(){
