@@ -133,13 +133,12 @@ endGame();
 var endGame = function() {
   window.alert("The game has now ended. Let's see how you did!");
 
-  var highScore = localStorage.setItem ("highscore");
   // if player is still alive, player wins!
   if (playerInfo.health > 0) {
     window.alert("Great job, you've survived the game! You now have a score of " + playerInfo.money + ".");
   } else {
     window.alert("You've lost your robot in battle.");
-  }
+  };
   var highScore = localStorage.getItem("highscore");
   if (highScore === null) {
     highScore = 0;
@@ -150,9 +149,9 @@ var endGame = function() {
     localStorage.setItem("highscore", playerInfo.money);
     localStorage.setItem("name", playerInfo.name);
 
-    alert(playerInfo.name + " now has the high score of " + playerInfo.money + "!");
+    window.alert(playerInfo.name + " now has the high score of " + playerInfo.money + "!");
   } else {
-    alert(playerInfo.name + " did not beat the high score of " + highScore + ". Maybe next time!");
+    window.alert(playerInfo.name + " did not beat the high score of " + highScore + ". Maybe next time!");
   }
 
   // ask player if they'd like to play again
@@ -168,7 +167,7 @@ var playAgainConfirm = window.confirm ("Would you like to play again?");
 var shop = function(){
   //displays prompt asking player what decision they'd like to make 
 var shopOptionPrompt = window.prompt(
-  "Would you like to REFILL your health, UPGRADE your attack, or LEAVE the store? Please enter one: 'REFILL', 'UPGRADE', or 'LEAVE' to make a choice."
+  "Would you like to REFILL(1) your health, UPGRADE(2) your attack, or LEAVE(3) the store? Please enter one: '1', '2', or '3' to make a choice."
 );
 shopOptionPrompt = parseInt(shopOptionPrompt);
 
