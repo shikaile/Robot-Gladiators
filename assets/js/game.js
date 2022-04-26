@@ -19,7 +19,7 @@ var fightOrSkip = function(){
   }
     promptFight = promptFight.toLowerCase();
 
-    if (promptFight === "skip" || promptFight === "SKIP") {
+    if (promptFight === "skip") {
       // confirm player wants to skip
       var confirmSkip = window.confirm("Are you sure you'd like to quit?");
 
@@ -95,6 +95,7 @@ var startGame = function(){
 
 // fight each enemy-robot by looping over them and fighting them one at a time
 for(var i =0; i < enemyInfo.length; i++){
+  console.log(playerInfo);
   //if player still alive fight
   if (playerInfo.health > 0) {
     // let player know what round they are in, remember that arrays start at 0 so it needs to have 1 added to it
@@ -138,6 +139,20 @@ var endGame = function() {
   } else {
     window.alert("You've lost your robot in battle.");
   }
+  var highScore = localStorage.getItem("highscore");
+  if (highScore === null) {
+    highScore = 0;
+  }
+
+  // if player has more money than the high score, player has new high score!
+  if (playerInfo.money > highScore) {
+    localStorage.setItem("highscore", playerInfo.money);
+    localStorage.setItem("name", playerInfo.name);
+
+    alert(playerInfo.name + " now has the high score of " + playerInfo.money + "!");
+  } else {
+    alert(playerInfo.name + " did not beat the high score of " + highScore + ". Maybe next time!");
+  }
 
   // ask player if they'd like to play again
 var playAgainConfirm = window.confirm ("Would you like to play again?");
@@ -160,16 +175,13 @@ switch (shopOptionPrompt) {
   case 1:
    playerInfo.refillHealth();
     break;
-
     case 2:
       playerInfo.upgradeAttack();
       break;
-
     case 3:
       window.alert("Leaving the store.");
       // do nothing, so function will end
       break;
-    
       default:
         window.alert("You did not pick a valid option. Try again.");
 
@@ -235,7 +247,7 @@ var enemyInfo = [
   {
     name: "Robo Trumble",
     attack: randomNumber(10, 14)
-  },
+  }
 ];
 
 startGame();
